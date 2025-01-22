@@ -40,20 +40,19 @@ class EmployeeController extends Controller
 
     // Menyimpan data karyawan baru
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'job' => 'required|string|max:255',
-            'division' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'job' => 'required|string|max:255',
+        'division' => 'required|string|max:255',
+        'status' => 'required|string|max:255',
+    ]);
 
-        // Simpan data karyawan baru ke database
-        Employee::create($request->all());
+    Employee::create($request->only(['name', 'job', 'division', 'status']));
 
-        // Redirect atau beri respons setelah penyimpanan berhasil
-        return redirect()->route('employees.index');
-    }
+    return redirect()->route('employees.index')->with('success', 'Employee created successfully!');
+}
+
 
     // Menampilkan form untuk mengedit data karyawan
     public function edit($id)
@@ -67,26 +66,28 @@ class EmployeeController extends Controller
 
     // Memperbarui data karyawan
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'job' => 'required|string|max:255',
-            'division' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'job' => 'required|string|max:255',
+        'division' => 'required|string|max:255',
+        'status' => 'required|string|max:255',
+    ]);
 
-        $employee = Employee::findOrFail($id);
-        $employee->update($request->all());
+    $employee = Employee::findOrFail($id);
+    $employee->update($request->only(['name', 'job', 'division', 'status']));
 
-        return redirect()->route('employees.index');
-    }
+    return redirect()->route('employees.index')->with('success', 'Employee updated successfully!');
+}
+
 
     // Menghapus data karyawan
     public function destroy($id)
-    {
-        $employee = Employee::findOrFail($id);
-        $employee->delete();
+{
+    $employee = Employee::findOrFail($id);
+    $employee->delete();
 
-        return redirect()->route('employees.index');
-    }
+    return redirect()->route('employees.index')->with('success', 'Employee deleted successfully!');
+}
+
 }

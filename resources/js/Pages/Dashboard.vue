@@ -16,7 +16,7 @@ import { Head } from '@inertiajs/vue3';
                                             id="inline-search" 
                                             type="text" 
                                             placeholder="Search">
-                                        <a href="#"
+                                        <a href="/employee/create"
                                            class="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
                                             Create
                                         </a>
@@ -58,8 +58,8 @@ import { Head } from '@inertiajs/vue3';
                                                         </span>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-no-wrap text-right flex gap-2 justify-end">
-                                                        <a href="#" class="text-blue-600 hover:text-blue-900 focus:outline-none focus:underline">Show</a>
-                                                        <a href="#" class="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline">Edit</a>
+                                                        <a href="/employee/show" class="text-blue-600 hover:text-blue-900 focus:outline-none focus:underline">Show</a>
+                                                        <a href="/employee/edit" class="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline">Edit</a>
                                                         <a href="#" class="text-red-600 hover:text-red-900 focus:outline-none focus:underline">Delete</a>
                                                     </td>
                                                 </tr>
